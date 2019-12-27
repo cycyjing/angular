@@ -1,0 +1,25 @@
+<header>
+  ToDoList
+  <input type="text" placeholder="add ToDo" [(ngModel)]="keyword" (keyup)="doAdd($event)">
+</header>
+<div class="content">
+  <h2>
+    Doing
+    <span>{{doing}}</span>
+  </h2>
+  <div class="item doing-item" *ngFor="let item of todoList; let key=index" [hidden]="item.status==1"
+    (change)="count()">
+    <input type="checkbox" [(ngModel)]="item.status">
+    {{item.title}}
+    <button (click)=" delete(key)">DELETE</button>
+  </div>
+  <h2>
+    Done
+    <span>{{done}}</span>
+  </h2>
+  <div class="item done-item" *ngFor="let item of todoList; let key=index" [hidden]="item.status==0" (change)="count()">
+    <input type="checkbox" [(ngModel)]="item.status">
+    {{item.title}}
+    <button (click)=" delete(key)">DELETE</button>
+  </div>
+</div>

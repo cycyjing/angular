@@ -1,0 +1,64 @@
+<h1>** import images</h1>
+<img src="assets/images/avatar3.jpg" alt="avatar3">
+<img src="https://ak6.picdn.net/shutterstock/videos/3775625/thumb/1.jpg" alt="online">
+<img [src]="imgUrl" alt="">
+<hr>
+
+<h1>** loop with index</h1>
+<ul>
+  <li *ngFor="let item of list;let key=index">
+    <span *ngIf="key===1" class="red">{{key+1}}----{{item.title}}</span>
+    <span *ngIf="key!=1">{{key+1}}----{{item.title}}</span>
+  </li>
+</ul>
+<dl *ngFor="let item of list; let key=index">
+  <dt>{{key}}</dt>
+  <dd>{{item.title}}</dd>
+</dl>
+<hr>
+
+<h1>** if</h1>
+<div *ngIf="flag">
+  <img src="assets/images/avatar3.jpg" alt="">
+</div>
+<div *ngIf="!flag">
+  <img src="assets/images/avatar4.jpg" alt="">
+</div>
+<hr>
+
+<h1>** switch</h1>
+<span [ngSwitch]="switchStatus">
+  <p *ngSwitchCase="1">
+    have paid
+  </p>
+  <p *ngSwitchCase="2">
+    make sure the order
+  </p>
+  <p *ngSwitchCase="3">
+    sent the goods
+  </p>
+  <p *ngSwitchCase="4">
+    received the goods
+  </p>
+  <p *ngSwitchDefault>
+    no order
+  </p>
+</span>
+<hr>
+
+<h1>** ngClass</h1>
+<h2 [ngClass]="{'red': !flag}">class</h2>
+<ul>
+  <li *ngFor="let item of list;let key=index" [ngClass]="{'red':key===1,orange:key===0}">
+    {{key+1}}----{{item.title}}
+  </li>
+</ul>
+<h2 [ngStyle]="{'color': 'blue'}">blue</h2>
+<!-- variables are no quotes -->
+<h2 [ngStyle]="{'color': fontColor}">font color</h2>
+<hr>
+
+<h1>** event</h1>
+<p><strong>{{keyup.value}}</strong></p>
+keyUp:
+<input #keyup type="text" (keyup)="keyUp($event)">

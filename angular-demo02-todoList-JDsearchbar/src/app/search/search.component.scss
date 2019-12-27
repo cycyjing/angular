@@ -1,0 +1,33 @@
+input {
+  width: 240px;
+  height: 40px;
+  border: 1px solid #d4d1d1;
+  border-radius: 20px;
+  outline-style: none;
+  padding-left: 20px;
+  font-size: 18px;
+}
+button {
+  background-color: transparent;
+  border-style: none;
+  outline: none;
+}
+.search {
+  width: 82px;
+  height: 40px;
+  font-size: 25px;
+  margin-left: 5px;
+}
+span {
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #f5f3f3;
+  padding: 3px 5px 3px 10px;
+  margin: 10px 5px 0 0;
+  font-size: 18px;
+
+  button{
+    color: #3d2ec4;
+    font-weight: 800;
+  }
+}

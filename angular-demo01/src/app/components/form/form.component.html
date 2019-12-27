@@ -1,0 +1,40 @@
+<fieldset>
+  <legend>Personnel Registration System</legend>
+  <table>
+    <tr>
+      <td>Username:</td>
+      <td><input type="text" [(ngModel)]="personInfo.username"></td>
+    </tr>
+    <tr>
+      <td>Gender:</td>
+      <td>
+        <input type="radio" name="sex" value="0" [(ngModel)]="personInfo.sex">Female
+        &nbsp;&nbsp;
+        <input type="radio" name="sex" value="1" [(ngModel)]="personInfo.sex">Male
+      </td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td>
+        <select name="city" id="" [(ngModel)]="personInfo.city">
+          <option *ngFor="let item of personInfo.cityList" [value]="item">{{item}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>Hobby:</td>
+      <td>
+        <span *ngFor="let item of personInfo.hobbies;let key=index;">
+          <input type="checkbox" name="hobbies" [id]="'check'+key" [(ngModel)]="item.checked">{{item.title}}
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>Others:</td>
+      <td><textarea name="" id="" cols="30" rows="10" [(ngModel)]="personInfo.others"></textarea></td>
+    </tr>
+  </table>
+  <button (click)="doSubmit()">Submit</button>
+</fieldset>
+
+<pre>{{personInfo|json}}</pre>

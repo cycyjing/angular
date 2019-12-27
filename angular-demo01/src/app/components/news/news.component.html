@@ -1,0 +1,36 @@
+<h1>** binding data</h1>
+<h2>{{title}}</h2>
+<h2>{{msg}}</h2>
+<!-- <h2>{{writerinfo.name}}---{{writerinfo.age}}</h2> -->
+<hr>
+
+<h1>** binding attributes</h1>
+<h2 title="mouse focus">move mouse to here</h2>
+<h2 [title]='msg'>{{name}}</h2>
+<hr>
+
+<h1>** binding html</h1>
+<h2>{{content}}</h2>
+<span [innerHTML]='content' class="red"></span>
+<hr>
+
+<h1>** simple calculation</h1>
+<h2>2*3={{2*3}}</h2>
+<hr>
+
+<h1>** loop</h1>
+<ul>
+  <li *ngFor='let item of array'>{{item}}</li>
+</ul>
+<ol>
+  <li *ngFor='let item of arr'>{{item}}</li>
+</ol>
+<ul>
+  <li *ngFor="let item of userList">{{item.username}}---{{item.age}}</li>
+</ul>
+<!-- must nested -->
+<dl>
+  <dt *ngFor="let item of cars">{{item.car}}
+    <h5 *ngFor="let list of item.list">{{list.title}}---{{list.price}}</h5>
+  </dt>
+</dl>

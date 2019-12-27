@@ -1,0 +1,10 @@
+<app-header #header [title]="title" [method]="homeRun" [home]='this'></app-header>
+<hr>
+
+
+<p>home works!</p>
+<button (click)="getChildHeaderRun()">get header data and method</button>
+
+
+<hr>
+<app-footer (xxx)="run($event)"></app-footer>
