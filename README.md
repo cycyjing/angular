@@ -1,5 +1,3 @@
-# From 2019/11/20
-
 ## create new project
 
 npm new [project name]
