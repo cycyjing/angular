@@ -12,7 +12,7 @@ ng serve --open
 
 ## ngFor--loop
 
-```ts+html
+```html
 <dl>
   <dt *ngFor="let item of cars; let key=index">{{item.car}}--{{key}}
     <h5 *ngFor="let list of item.list">{{list.title}}---{{list.price}}</h5>
@@ -43,37 +43,47 @@ ng serve --open
 ### @ViewChild：child to father
 
 1. DOM操作，
+
 2. sub-component，父组件操作子组件（调用子组件DOM和方法）
 
 suggest to get DOM in method ngAfterViewInit()，because the DOM loading completed in this time.
 
-```ts+html
+```html
+<div #mybox>this is a div</div
+<app-header #header>header</app-header>
+```
+
+```ts
 // query results available in ngOnInit
 @ViewChild('mybox',{static:true}) mybox:any;
 // query results available in ngAfterViewInit
 // normally,use 'false', only rarer cases use 'true'!!!
 // https://angular.io/guide/static-query-migration
 @ViewChild('header',{static:false}) header:any;
-
-<div #mybox>this is a div</div>
-<app-header #header>header</app-header>
 ```
 
 ### @Output：child to father + EventEmitter
 
 相当于在子组件中给父组件广播，父组件接受
 
-```ts+html
+```html
 // child
 <button (click)="sendFather()">send to father</button>
+```
 
+```ts
 @Output() private outer = new EventEmitter();
 sendFather() {
     this.outer.emit('send to father from child---footer');
 }
+```
+
+```html
 // father
 <app-footer (xxx)="run($event)"></app-footer>
+```
 
+```ts
 run(e){
     console.log(e)
     console.log('object home---father')
@@ -104,10 +114,6 @@ ngAfterViewChecked：
 ！ngOnDestroy：
 
 > SEE angular-demo03：lifecycle，lifecycle-parent
-
-
-
-
 
 ## RxJS
 
@@ -150,7 +156,7 @@ Angular 6之前的要装rxjs-compat才可以使用。
 
 {HttpClient, HttpHeaders}直接引入到要用的component中
 
-```
+```ts
 const httpOptions = { 
   headers: new HttpHeaders({ 
 	'Content-Type': 'application/json' }) 
@@ -168,6 +174,118 @@ PS: 服务器必须支持jsonp
 ### 4. third party-axios 第三方模块axios请求数据
 
 可以自己封装方法，也可以直接引入到要用的component中
+
+## route
+
+{path: '', redirectTo: 'home', pathMatch: 'full'}
+
+{path: '**', redirectTo: 'home'}
+
+means to match any routes that are not found
+
+表示匹配不到路由的时候跳转到home路由
+
+### 普通
+
+routerLink
+
+### get传值
+
+queryParams，跳转传值
+
+```html
+<ul>
+  <!-- get -->
+  <li *ngFor="let item of list;let key=index">
+    <a [routerLink]="['/news-content']" [queryParams]="{nid:key+1}">{{key}}---{{item}}</a>
+  </li>
+</ul>
+```
+
+import {ActivatedRoute} from '@angular/router'，获取
+
+```ts
+this.activatedRoute.queryParams.subscribe((data) => {
+	console.log(data.nid);
+    this.nid = data.nid;
+});
+```
+
+### dynamic route 动态路由
+
+rounterLink, second param
+
+```html
+<ul>
+  <!-- dynamic route -->
+  <li *ngFor="let item of list;let key=index">
+    <a [routerLink]="['/news-content',key]">{{key}}---{{item}}</a>
+  </li>
+</ul>
+```
+
+```ts
+this.activatedRoute.params.subscribe((data) => {
+      console.log(data.nid);
+      this.nid = data.nid;
+});
+```
+
+### js传值
+
+1. get
+
+   ```html
+   <button (click)="toProductContent()">js to product content page by dynamic route</button>
+   <br>
+   <br>
+   <button (click)="toHome()">js to home page</button>
+   ```
+
+   ```ts
+   import { Router } from '@angular/router';
+   constructor(public router: Router) { }
+   
+   toProductContent() {
+       this.router.navigate(['/product-content', '1']);
+   }
+     toHome() {
+       this.router.navigate(['/home']);
+   }
+   ```
+
+2. dynamic route
+
+   ```html
+   <button (click)="toNews()">js to news page by get</button>
+   ```
+
+   ```ts
+   import { Router, NavigationExtras } from '@angular/router';
+   constructor(public router: Router) { }
+   
+   toNews() {
+       let queryParams = {
+         queryParams: { pid: 111 }
+       };
+       // or
+       // let navigationExtras: NavigationExtras = {
+       //   queryParams: { 'session_id': '123' },
+       //   fragment: 'anchor'
+       // };
+       this.router.navigate(['/news'], queryParams);
+   }
+   ```
+
+   
+
+> SEE angular-demo04
+
+
+
+
+
+
 
 
 
@@ -224,9 +342,9 @@ the type of interface you want to implement
 })
 ```
 
-> The `<script>` element is a notable exception; it is forbidden 禁用
+>The `<script>` element is a notable exception; it is forbidden 禁用
 
-### binding syntax
+###  binding syntax
 
 one-way from data source to view target: interpolation, property, attribute, class, style
 
@@ -254,11 +372,11 @@ bindon-target='expression'
 
 attributes are defined by HTML, properties are defined by the DOM(Document Object Model)
 
-> template binding works with **properties s** and **events**, not **attributes**
+>template binding works with **properties s** and **events**, not **attributes**
 
 ### Property binding 
 
-```ts+html
+```html
 // they are same
 <p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
 <p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
@@ -269,7 +387,7 @@ attributes are defined by HTML, properties are defined by the DOM(Document Objec
 
 ## Attribute, class and style bindings
 
-```ts+html
+```html
 <tr><td [attr.colspan]="1 + 1">One-Two</td></tr>
     
 // the *NgClass* directive is usually preferred when managing multiple class names at the same time.
