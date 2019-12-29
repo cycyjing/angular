@@ -1,1 +1,14 @@
 <p>news works!</p>
+<ul>
+  <!-- get -->
+  <!-- <h2>get</h2> -->
+  <!-- <li *ngFor="let item of list;let key=index">
+    <a [routerLink]="['/news-content']" [queryParams]="{nid:key+1}">{{key}}---{{item}}</a>
+  </li> -->
+
+  <!-- dynamic route -->
+  <h2>dynamic route</h2>
+  <li *ngFor="let item of list;let key=index">
+    <a [routerLink]="['/news-content',key]">{{key}}---{{item}}</a>
+  </li>
+</ul>

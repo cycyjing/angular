@@ -3,13 +3,17 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NewsComponent } from './news/news.component';
 import { ProductComponent } from './product/product.component';
+import { NewsContentComponent } from './news-content/news-content.component';
+import { ProductContentComponent } from './product-content/product-content.component';
 
 
 const routes: Routes = [
-  { path: '**', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'news', component: NewsComponent },
-  { path: 'product', component: ProductComponent }
+  { path: 'news-content/:nid', component: NewsContentComponent },
+  { path: 'product', component: ProductComponent },
+  { path: 'product-content/:pid', component: ProductContentComponent },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
