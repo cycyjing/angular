@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+.content {
+  width: 100%;
+  height: 600px;
+  display: flex;
+
+  .left {
+    width: 200px;
+    border-right: dashed #eeeeee;
+
+    a {
+      display: block;
+      font-size: 20px;
+      text-align: center;
+      line-height: 70px;
+      text-decoration: none;
+    }
+    .active {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}

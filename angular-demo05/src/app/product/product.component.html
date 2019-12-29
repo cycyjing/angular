@@ -1,1 +1,9 @@
-<p>product works!</p>
+<div class="content">
+  <div class="left">
+    <a [routerLink]="['/product/categories']" routerLinkActive="active" >Categories</a>
+    <a [routerLink]="['/product/lists']" routerLinkActive="active" >Lists</a>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>

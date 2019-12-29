@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div class="content">
+  <div class="left">
+    <a [routerLink]="['/home/welcome']" routerLinkActive="active" >Welcome</a>
+    <a [routerLink]="['/home/setting']" routerLinkActive="active" >Setting</a>
+  </div>
+  <div class="right">
+    <router-outlet></router-outlet>
+  </div>
+</div>
