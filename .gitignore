@@ -13,6 +13,8 @@
 /angular-demo03/node_modules
 /angular-demo04/node_modules
 
+
+
 # profiling files
 chrome-profiler-events*.json
 speed-measure-plugin*.json
