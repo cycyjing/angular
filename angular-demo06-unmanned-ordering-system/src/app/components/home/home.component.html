@@ -22,9 +22,11 @@
     <ul class="item_list">
       <li *ngFor="let food of item.list">
         <div class="inner">
-          <img [src]="domain+food.img_url" />
-          <p class="title">{{food.title}}</p>
-          <p class="price">¥{{food.price}}</p>
+          <a [routerLink]="[ '/detail', food._id ]">
+            <img [src]="domain+food.img_url" />
+            <p class="title">{{food.title}}</p>
+            <p class="price">¥{{food.price}}</p>
+          </a>
         </div>
       </li>
     </ul>

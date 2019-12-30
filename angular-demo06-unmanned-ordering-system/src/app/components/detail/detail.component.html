@@ -2,26 +2,13 @@
 
 <div class="d_content">
   <div class="d_info">
-    <img src="assets/images/product.jpg" />
-    <h2>小炒肉</h2>
-    <p class="price">22.00/份</p>
+    <img [src]="domain+list.img_url" />
+    <h2>{{list.title}}</h2>
+    <p class="price">{{list.price}}/份</p>
   </div>
   <div class="d_detial">
-    <h3>
-      Food Detail
-    </h3>
-    <div class="d_content">
-      <img src="assets/images/product.jpg" />
-      <br />
-      <p>
-        韩国辣酱海鲜炒面,青椒炒牛肉,芦笋腰果炒虾仁,『家常料理』简单又好吃的辣炒起司年糕鸡排
-      </p>
-
-      <br />
-      <p>
-        韩国辣酱海鲜炒面,青椒炒牛肉,芦笋腰果炒虾仁,『家常料理』简单又好吃的辣炒起司年糕鸡排
-      </p>
-    </div>
+    <h3>Food Detail</h3>
+    <div class="d_content" [innerHTML]='list.content'></div>
   </div>
 </div>
 
