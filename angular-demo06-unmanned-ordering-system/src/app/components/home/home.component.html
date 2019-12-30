@@ -1,0 +1,34 @@
+<header class="header">
+  <div class="hlist">
+    <img src="assets/images/rexiao.png" />
+    <p>Hot Lists</p>
+  </div>
+
+  <div class="hlist">
+    <img src="assets/images/caidan.png" />
+    <p>Ordered Dishes</p>
+  </div>
+  <div class="hlist">
+
+    <img src="assets/images/sousuo.png" />
+    <p>Search</p>
+  </div>
+</header>
+
+<div class="content">
+  <div class="item" *ngFor="let item of results">
+    <h3 class="item_cate">{{item.title}}</h3>
+
+    <ul class="item_list">
+      <li *ngFor="let food of item.list">
+        <div class="inner">
+          <img [src]="domain+food.img_url" />
+          <p class="title">{{food.title}}</p>
+          <p class="price">¥{{food.price}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="bg" id="bg"></div>
