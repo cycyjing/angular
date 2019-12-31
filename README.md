@@ -279,15 +279,52 @@ this.activatedRoute.params.subscribe((data) => {
 
    
 
-> SEE angular-demo04
+>  SEE angular-demo04
 
+### nested
 
+ children
 
+> SEE angular-demo05
 
+## custom module 自定义模块
 
+项目小的时候不建议使用自定义模块
 
+项目大的时候，可以将相类似的组件封装在模块中，由根模块调用子模块
 
+app中引入自定义模块
 
+module中的组件要暴露出来才可以外部使用
+
+### lazy load by route
+
+```bash
+// the module with route
+ng g module [name] --routing
+```
+```ts
+// app module
+const routes: Routes = [
+  { path: 'user', loadChildren: './module/user/user.module#UserModule' },
+  { path: 'product', loadChildren: './module/product/product.module#ProductModule' },
+  { path: '**', redirectTo: 'user' }
+];
+// product module!!!
+const routes: Routes = [
+  {
+    path: '', component: ProductComponent,
+    // mount in product module!!!
+    children: [
+      { path: 'info', component: InfoComponent },
+      { path: '', redirectTo: 'info', pathMatch: 'full' }
+    ]
+  },
+  // mount in app module!!!
+  { path: 'list', component: ListComponent }
+];
+```
+> SEE angular-demo07
 
 ## Architecture
 
