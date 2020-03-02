@@ -1,1 +1,13 @@
-<p>home works!</p>
+<h1>Welcome!</h1>
+
+<div class="section">
+  You've clicked <button (click)="countClick()">this</button> {{count}}
+  <ng-container *ngIf="count<2; else times">time</ng-container>
+  <ng-template #times>times</ng-template>.
+</div>
+
+<div class="section">
+  <input type="text" [(ngModel)]="text">
+  <br>
+  <strong>You said:</strong> {{text}}
+</div>
