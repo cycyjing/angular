@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  brews: Object;
 
-  constructor() { }
+  constructor(public $http: HttpService) { }
 
   ngOnInit(): void {
+    this.$http.getBeer().subscribe((data) => {
+      this.brews = data;
+      console.log(this.brews);
+    });
   }
 
 }

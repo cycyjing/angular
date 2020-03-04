@@ -1,0 +1,39 @@
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    background-color: rgb(238, 238, 238);
+    padding: 1em;
+    margin-right: 10px;
+    margin-bottom: 1em;
+    width: 20%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+
+    &:hover {
+      box-shadow:10px 10px 10px darken($color: rgb(238, 238, 238), $amount: 10%);
+      transform: translateY(-3px);
+      transition: all .3s ease-out;
+    }
+
+    p {
+      margin: 0;
+    }
+    .name {
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+    .country {
+      text-transform: uppercase;
+      flex-grow: 1;
+    }
+    a {
+      font-size: 0.6em;
+      color: rgb(95, 94, 94);
+      text-decoration: none;
+    }
+  }
+}

@@ -1,1 +1,9 @@
-<p>list works!</p>
+<h1>Breweries</h1>
+
+<ul *ngIf="brews">
+  <li *ngFor="let item of brews">
+    <p class="name">{{item.name}}</p>
+    <p class="country">{{item.country}}</p>
+    <a href="{{item.website_url}}" class="site">{{item.website_url}}</a>
+  </li>
+</ul>
