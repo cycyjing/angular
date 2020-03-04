@@ -11,3 +11,14 @@
   <br>
   <strong>You said:</strong> {{text}}
 </div>
+
+<div class="section" [ngStyle]="{
+  'border': count>5 ? '4px solid': '',
+  'background-color': count>5 ? 'yellow': 'lightgray'}">
+  <ng-template [ngIf]="count>5" [ngIfElse]="name">
+    The click counter <strong>IS GREATER</strong> than 5.
+  </ng-template>
+  <ng-template #name>
+    The click counter is not greater than 5.
+  </ng-template>
+</div>
